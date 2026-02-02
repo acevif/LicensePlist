@@ -21,10 +21,13 @@ When `Package.resolved` changes, regenerate the SwiftPM metadata and hashes:
 make nix_update
 ```
 
-## Reference Example
+## Reference Examples
 
-A good real-world `swiftpm2nix` example is the `swift-docc` package in Nixpkgs.
-It uses `swiftpm2nix`-generated inputs under `pkgs/development/compilers/swift/swift-docc`.
+Good real-world `swiftpm2nix` examples in Nixpkgs include:
+
+- `swift-docc` under `pkgs/development/compilers/swift/swift-docc`
+- `swift-format` under `pkgs/development/compilers/swift/swift-format`
+- `sourcekit-lsp` under `pkgs/development/compilers/swift/sourcekit-lsp`
 
 ## Notes
 
@@ -32,6 +35,8 @@ It uses `swiftpm2nix`-generated inputs under `pkgs/development/compilers/swift/s
 
 Building the Swift toolchain (Swift package) can take around 1 hour; with debug settings it can exceed 4 hours.
 Given this, consider using prebuilt binaries when possible.
+LicensePlist itself builds via `swift build` and does not require Xcode toolchains; therefore the Nix build
+must also avoid an Xcode dependency and use a pure Swift toolchain.
 
 Sources:
 - https://forums.swift.org/t/long-compile-times-of-toolchain-rebuilds/64863
