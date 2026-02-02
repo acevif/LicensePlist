@@ -25,3 +25,14 @@ make nix_update
 
 A good real-world `swiftpm2nix` example is the `swift-docc` package in Nixpkgs.
 It uses `swiftpm2nix`-generated inputs under `pkgs/development/compilers/swift/swift-docc`.
+
+## Notes
+
+### Swift Build Time
+
+Building the Swift toolchain (Swift package) can take around 1 hour; with debug settings it can exceed 4 hours.
+Given this, consider using prebuilt binaries when possible.
+
+Sources:
+- https://forums.swift.org/t/long-compile-times-of-toolchain-rebuilds/64863
+- https://johnfairh.github.io/site/swift_source_basics.html
