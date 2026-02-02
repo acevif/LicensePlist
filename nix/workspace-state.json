@@ -1,0 +1,195 @@
+{
+  "object": {
+    "artifacts": [],
+    "dependencies": [
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "apikit",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/ishkawa/APIKit.git",
+          "name": "apikit"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "4e7f42d93afb787b0bc502171f9b5c12cf49d0ca",
+            "version": "5.3.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "apikit"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "flatten",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/YusukeHosonuma/Flatten.git",
+          "name": "flatten"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "5286148aa255f57863e0d7e2b827ca6b91677051",
+            "version": "0.1.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "flatten"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "heliumlogger",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/Kitura/HeliumLogger.git",
+          "name": "heliumlogger"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "fc2a71597ae974da5282d751bcc11965964bccce",
+            "version": "2.0.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "heliumlogger"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "loggerapi",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/Kitura/LoggerAPI.git",
+          "name": "loggerapi"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
+            "version": "2.0.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "loggerapi"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "shlist",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/YusukeHosonuma/SHList.git",
+          "name": "shlist"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "6c61f5382dd07a64d76bc8b7fad8cec0d8a4ff7a",
+            "version": "0.1.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "shlist"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swift-argument-parser",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/apple/swift-argument-parser.git",
+          "name": "swift-argument-parser"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "9f39744e025c7d377987f30b03770805dcb0bcd1",
+            "version": "1.1.4"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swift-argument-parser"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swift-html-entities",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/Kitura/swift-html-entities.git",
+          "name": "swift-html-entities"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "d8ca73197f59ce260c71bd6d7f6eb8bbdccf508b",
+            "version": "4.0.1"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swift-html-entities"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swift-log",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/apple/swift-log.git",
+          "name": "swift-log"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+            "version": "1.4.2"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swift-log"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swiftparamtest",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/YusukeHosonuma/SwiftParamTest",
+          "name": "swiftparamtest"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "f513e1dbbdd86e2ca2b672537f4bcb4417f94c27",
+            "version": "2.2.1"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swiftparamtest"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "xcodeedit",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/tomlokhorst/XcodeEdit.git",
+          "name": "xcodeedit"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "cd466d6e8c5ffd2f2b61165d37b0646f09068e1e",
+            "version": "2.9.0"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "xcodeedit"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "yams",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/jpsim/Yams.git",
+          "name": "yams"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "f47ba4838c30dbd59998a4e4c87ab620ff959e8a",
+            "version": "5.0.5"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "yams"
+      }
+    ]
+  },
+  "version": 6
+}

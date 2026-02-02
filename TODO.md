@@ -1,0 +1,2 @@
+- [ ] Mention `nix_update` target in README (Nix section).
+- [ ] Add a build-time check to fail if `nix/` is stale.

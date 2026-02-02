@@ -42,6 +42,48 @@ brew install licenseplist
 mint run mono0926/LicensePlist
 ```
 
+### Nix (flake)
+
+Use in your own project (add `license-plist` to a devShell):
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    licenseplist.url = "github:mono0926/LicensePlist";
+  };
+
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+
+      nixpkgs = {
+        config.allowUnfree = true;
+      };
+
+      perSystem = { pkgs, inputs', ... }: {
+        devShells.default = pkgs.mkShell {
+          packages = [
+            inputs'.licenseplist.packages.default
+            pkgs.darwin.xcode_26_2
+          ];
+        };
+      };
+    };
+}
+```
+
+Then run:
+
+```sh
+nix develop
+license-plist --help
+```
+
 ### Xcode project - SPM
 
 In Project Settings, on the tab "Package Dependencies", click "+" and add `https://github.com/mono0926/LicensePlist`.

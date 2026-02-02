@@ -17,3 +17,7 @@ Pods
 test_result_dir
 /.history
 xcuserdata
+
+# Nix
+/result
+/result-*

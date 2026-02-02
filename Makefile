@@ -43,3 +43,12 @@ spm_artifactbundle_macos: build_portable
 	cp -f ".build/apple/Products/Release/license-plist" "$(ARTIFACT_BUNDLE_PATH)/license-plist-$(VERSION_STRING)-macos/bin"
 	cp -f "$(LICENSE_PATH)" "$(ARTIFACT_BUNDLE_PATH)"
 	(cd "$(TEMPORARY_FOLDER)"; zip -yr - "LicensePlistBinary.artifactbundle") > "./LicensePlistBinary-macos.artifactbundle.zip"
+
+# Note: `nix build` runs in a read-only, network-restricted sandbox, so it
+# cannot update nix/default.nix nor fetch hashes. Run this first.
+nix_update:
+	Tools/nix/update-swiftpm2nix.sh
+
+# Convenience target to update nix/ and then build.
+nix_build: nix_update
+	nix build .#
