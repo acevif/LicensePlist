@@ -35,4 +35,6 @@ Given this, consider using prebuilt binaries when possible.
 
 Sources:
 - https://forums.swift.org/t/long-compile-times-of-toolchain-rebuilds/64863
+- https://forums.swift.org/t/new-contributor-feedback-development-workflow-advice/74992
+- https://akrabat.com/compiling-swift-on-linux/
 - https://johnfairh.github.io/site/swift_source_basics.html
