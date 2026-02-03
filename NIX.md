@@ -31,6 +31,7 @@ Good real-world `swiftpm2nix` examples in Nixpkgs include:
 
 Other Swift packages using `swiftpm2nix` (stars as of 2026-02-03):
 
+- `arianvp/server-optimised-nixos` (https://github.com/arianvp/server-optimised-nixos) — 90 stars
 - `AUCOHL/Fault` (https://github.com/AUCOHL/Fault) — 179 stars
 - `dominicegginton/spinner` (https://github.com/dominicegginton/spinner) — 50 stars
 - `kradalby/munin` (https://github.com/kradalby/munin) — 11 stars
