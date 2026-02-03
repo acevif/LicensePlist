@@ -36,7 +36,6 @@ Other Swift packages using `swiftpm2nix` (stars as of 2026-02-03):
 - `dominicegginton/spinner` (https://github.com/dominicegginton/spinner) — 50 stars
 - `kradalby/munin` (https://github.com/kradalby/munin) — 11 stars
 - `Samasaur1/pam_watchid` (https://github.com/Samasaur1/pam_watchid) — 1 star
-- `Samasaur1/nix-swift-hello` (https://github.com/Samasaur1/nix-swift-hello) — 0 stars
 
 ## Notes
 
