@@ -25,9 +25,17 @@ make nix_update
 
 Good real-world `swiftpm2nix` examples in Nixpkgs include:
 
-- `swift-docc` under `pkgs/development/compilers/swift/swift-docc`
-- `swift-format` under `pkgs/development/compilers/swift/swift-format`
-- `sourcekit-lsp` under `pkgs/development/compilers/swift/sourcekit-lsp`
+- `swift-docc` under `pkgs/development/compilers/swift/swift-docc` (https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/compilers/swift/swift-docc/default.nix)
+- `swift-format` under `pkgs/development/compilers/swift/swift-format` (https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/compilers/swift/swift-format/default.nix)
+- `sourcekit-lsp` under `pkgs/development/compilers/swift/sourcekit-lsp` (https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/compilers/swift/sourcekit-lsp/default.nix)
+
+Other Swift packages using `swiftpm2nix` (stars as of 2026-02-03):
+
+- `AUCOHL/Fault` (https://github.com/AUCOHL/Fault) — 179 stars
+- `dominicegginton/spinner` (https://github.com/dominicegginton/spinner) — 50 stars
+- `kradalby/munin` (https://github.com/kradalby/munin) — 11 stars
+- `Samasaur1/pam_watchid` (https://github.com/Samasaur1/pam_watchid) — 1 star
+- `Samasaur1/nix-swift-hello` (https://github.com/Samasaur1/nix-swift-hello) — 0 stars
 
 ## Notes
 
