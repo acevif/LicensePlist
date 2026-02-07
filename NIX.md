@@ -4,14 +4,14 @@
 
 A reproducible darwin package for `license-plist`, built with SwiftPM + `swiftpm2nix`.
 The Nix build uses a pure Swift toolchain and does not depend on Xcode, just like the standard LicensePlist build.
-`swiftpm2nix` captures the SwiftPM state (`workspace-state.json`) and materializes Nix files (`default.nix`).
+`swiftpm2nix` captures the SwiftPM state (`.build/workspace-state.json`) and materializes Nix files (`default.nix`).
 
 ## Project Status
 
 ### Current State
 
 - `flake.nix` uses flake-parts and exposes `packages.default` via `nix/license-plist.nix`.
-- `nix/license-plist.nix` consumes `swiftpm2nix` outputs (`nix/default.nix` / `nix/workspace-state.json`).
+- `nix/license-plist.nix` consumes `swiftpm2nix` outputs (`nix/default.nix`).
 - `Tools/nix/update-swiftpm2nix.sh` and Make targets `nix_update` / `nix_build` are in place.
 - `nix build .#` currently triggers a source build of the Swift toolchain (`swift-5.10.1`, `swiftpm`, etc.), which is very slow and times out.
 - The Nix build must use a pure Swift toolchain (no Xcode dependency), matching how LicensePlist builds via `swift build`.
@@ -50,9 +50,8 @@ make nix_update
 ### swiftpm2nix Outputs
 
 This repository uses `swiftpm2nix` to make SwiftPM dependencies reproducible in Nix by materializing SwiftPM
-resolution metadata into Nix expressions. The generated files are `nix/workspace-state.json` (a copy of SwiftPM's
-`.build/workspace-state.json`) and `nix/default.nix` (Nix expressions produced from that state), and they must be
-kept in sync with `Package.resolved`.
+resolution metadata into Nix expressions. The generated file is `nix/default.nix` (Nix expressions produced from
+SwiftPM's `.build/workspace-state.json`), and it must be kept in sync with `Package.resolved`.
 
 ### Sandbox Constraints
 
