@@ -4,7 +4,7 @@
 
 A reproducible darwin package for `license-plist`, built with SwiftPM + `swiftpm2nix`.
 The Nix build uses a pure Swift toolchain and does not depend on Xcode, just like the standard LicensePlist build.
-`swiftpm2nix` captures the SwiftPM state (`workspace-state.json`) and materializes Nix files (`default.nix`) (planned).
+`swiftpm2nix` captures the SwiftPM state (`workspace-state.json`) and materializes Nix files (`default.nix`).
 
 ## Project Status
 
@@ -21,7 +21,7 @@ The Nix build uses a pure Swift toolchain and does not depend on Xcode, just lik
 - [ ] NEXTACTION: Decide how to supply a pure Swift toolchain (prebuilt binary cache, alternative toolchain source, or accept long source builds).
 - [ ] NEXTACTION: Update `nix/license-plist.nix` to use the chosen toolchain source.
 - [ ] NEXTACTION: Re-run `nix build .#` to confirm the package builds.
-- [ ] NEXTACTION: Switch `Tools/nix/update-swiftpm2nix.sh` to consume SwiftPM's `.build/workspace-state.json` instead of reconstructing it from `Package.resolved`.
+- [x] NEXTACTION: Switch `Tools/nix/update-swiftpm2nix.sh` to consume SwiftPM's `.build/workspace-state.json` instead of reconstructing it from `Package.resolved`.
 - [ ] Mention `nix_update` target in README (Nix section).
 - [ ] Add a build-time check to fail if `nix/` is stale.
 
@@ -50,14 +50,9 @@ make nix_update
 ### swiftpm2nix Outputs
 
 This repository uses `swiftpm2nix` to make SwiftPM dependencies reproducible in Nix by materializing SwiftPM
-resolution metadata into Nix expressions. The generated files are `nix/workspace-state.json` (captured SwiftPM
-state) and `nix/default.nix` (Nix expressions produced from that state), and they must be kept in sync with
-`Package.resolved`.
-
-Current behavior is not ideal: `swiftpm2nix` is intended to consume SwiftPM's `.build/workspace-state.json`,
-but the repository currently reconstructs `nix/workspace-state.json` from `Package.resolved`. This is a brittle
-workaround and should be corrected to use the real SwiftPM output; doing so may require changes to Git tracking.
-This should be fixed in a follow-up change.
+resolution metadata into Nix expressions. The generated files are `nix/workspace-state.json` (a copy of SwiftPM's
+`.build/workspace-state.json`) and `nix/default.nix` (Nix expressions produced from that state), and they must be
+kept in sync with `Package.resolved`.
 
 ### Sandbox Constraints
 
