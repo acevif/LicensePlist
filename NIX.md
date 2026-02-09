@@ -13,14 +13,14 @@ The Nix build uses a pure Swift toolchain and does not depend on Xcode, just lik
 - `flake.nix` uses flake-parts and exposes `packages.default` via `nix/license-plist.nix`.
 - `nix/license-plist.nix` consumes `swiftpm2nix` outputs (`nix/default.nix`).
 - `Tools/nix/update-swiftpm2nix.sh` and Make targets `nix_update` / `nix_build` are in place.
-- `nix build .#` currently triggers a source build of the Swift toolchain (`swift-5.10.1`, `swiftpm`, etc.), which is very slow and times out.
+- `nix build` may trigger a source build of Swift/LLVM toolchains on darwin when no matching binary substitutes are available; in practice this can take about 1 hour and may exceed 4 hours.
 - The Nix build must use a pure Swift toolchain (no Xcode dependency), matching how LicensePlist builds via `swift build`.
 
 ### TODO
 
 - [ ] NEXTACTION: Decide how to supply a pure Swift toolchain (prebuilt binary cache, alternative toolchain source, or accept long source builds).
 - [ ] NEXTACTION: Update `nix/license-plist.nix` to use the chosen toolchain source.
-- [ ] NEXTACTION: Re-run `nix build .#` to confirm the package builds.
+- [ ] NEXTACTION: Re-run `nix build` to confirm the package builds.
 - [x] NEXTACTION: Switch `Tools/nix/update-swiftpm2nix.sh` to consume SwiftPM's `.build/workspace-state.json` instead of reconstructing it from `Package.resolved`.
 - [ ] Mention `nix_update` target in README (Nix section).
 - [ ] Add a build-time check to fail if `nix/` is stale.
@@ -29,9 +29,17 @@ The Nix build uses a pure Swift toolchain and does not depend on Xcode, just lik
 
 How to build and maintain this project with Nix.
 
+### Build
+
+Build the package with:
+
+```sh
+nix build
+```
+
 ### Update Nix Inputs and Build
 
-Use the Make target to update Nix inputs and build:
+If you also want to update flake inputs before building, use:
 
 ```sh
 make nix_build
@@ -61,7 +69,12 @@ SwiftPM's `.build/workspace-state.json`), and it must be kept in sync with `Pack
 
 Current configuration uses nixpkgs-provided `swift` / `swiftpm`, which triggers the expensive toolchain build
 on darwin. Building the Swift toolchain (Swift package) can take around 1 hour; with debug settings it can
-exceed 4 hours, so consider using prebuilt binaries when possible.
+exceed 4 hours. If your environment provides a trusted binary cache, using it can reduce this cost.
+
+This repository does not provide or operate a shared binary cache (for example, Cachix or Attic).
+Builds currently rely on `cache.nixos.org` plus the local machine's `/nix/store`. As a result, the first
+successful `nix develop` or `nix build` may compile Swift/LLVM locally and take a long time; later runs on
+the same machine are usually faster because they reuse local store paths.
 
 LicensePlist itself builds via `swift build` and does not require Xcode toolchains; therefore the Nix build
 must also avoid an Xcode dependency and use a pure Swift toolchain.

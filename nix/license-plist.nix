@@ -28,6 +28,16 @@ stdenv.mkDerivation {
     runHook postConfigure
   '';
 
+  buildPhase = ''
+    runHook preBuild
+
+    export HOME="$TMPDIR/home"
+    mkdir -p "$HOME"
+    swift build -c release --disable-automatic-resolution
+
+    runHook postBuild
+  '';
+
   installPhase = ''
     runHook preInstall
 
