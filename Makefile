@@ -51,7 +51,7 @@ spm_artifactbundle_macos: build_portable
 nix_update:
 	@test -f .build/workspace-state.json || (echo "SwiftPM workspace state not found at .build/workspace-state.json" >&2; echo "Run 'swift package resolve' first." >&2; exit 1)
 	@command -v swiftpm2nix >/dev/null || (echo "swiftpm2nix not found in PATH." >&2; echo "Run this target inside 'nix develop'." >&2; exit 1)
-	@swiftpm2nix
+	swiftpm2nix
 
 # Convenience target to update nix/ and then build.
 nix_build: nix_update
