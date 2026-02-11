@@ -4,7 +4,8 @@
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-.build/
+.build/*
+!.build/workspace-state.json
 /*.xcodeproj
 
 # For local development
@@ -17,3 +18,7 @@ Pods
 test_result_dir
 /.history
 xcuserdata
+
+# Nix
+/result
+/result-*
