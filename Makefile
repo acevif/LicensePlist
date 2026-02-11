@@ -45,9 +45,13 @@ spm_artifactbundle_macos: build_portable
 	(cd "$(TEMPORARY_FOLDER)"; zip -yr - "LicensePlistBinary.artifactbundle") > "./LicensePlistBinary-macos.artifactbundle.zip"
 
 # Note: `nix build` runs in a read-only, network-restricted sandbox, so it
-# cannot update nix/default.nix nor fetch hashes. Run this first.
+# cannot update generated nix files nor fetch hashes. Run this first.
+# Inputs: .build/workspace-state.json
+# Outputs: nix/workspace-state.json, nix/default.nix
 nix_update:
-	Tools/nix/update-swiftpm2nix.sh
+	@test -f .build/workspace-state.json || (echo "SwiftPM workspace state not found at .build/workspace-state.json" >&2; echo "Run 'swift package resolve' first." >&2; exit 1)
+	@command -v swiftpm2nix >/dev/null || (echo "swiftpm2nix not found in PATH." >&2; echo "Run this target inside 'nix develop'." >&2; exit 1)
+	@swiftpm2nix
 
 # Convenience target to update nix/ and then build.
 nix_build: nix_update
