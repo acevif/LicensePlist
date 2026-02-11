@@ -3,6 +3,7 @@
   stdenv,
   swift,
   swiftpm,
+  unzip,
   swiftpm2nix,
   src,
 }:
@@ -15,13 +16,10 @@ stdenv.mkDerivation {
   version = "3.25.1";
   inherit src;
 
-  patches = [
-    ./patches/remove-spm-plugin-binary-target.patch
-  ];
-
   nativeBuildInputs = [
     swift
     swiftpm
+    unzip
   ];
 
   configurePhase = ''

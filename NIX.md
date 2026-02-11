@@ -27,6 +27,5 @@ nix build
 
 ## Notes
 
-- `nix/default.nix` is generated from `.build/workspace-state.json`.
-- `nix/patches/remove-spm-plugin-binary-target.patch` is applied in Nix builds to remove SwiftPM plugin/binary-target entries from `Package.swift`.
-- That patch is Nix-only and avoids remote artifact download during sandboxed builds.
+- `swiftpm2nix` reads `.build/workspace-state.json` and generates `nix/default.nix` plus `nix/workspace-state.json`.
+- `nix/workspace-state.json` is a generated copy with SwiftPM artifacts removed for sandboxed Nix builds.
