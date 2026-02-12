@@ -3,7 +3,7 @@
 ## Overview
 
 This branch packages `license-plist` with the toolchain and `swiftpm2nix` shipped by `nixpkgs`.
-It targets `LicensePlist` `3.25.1` and keeps the build on a pure Swift toolchain (`swift`/`swiftpm`) without Xcode.
+It keeps the build on a pure Swift toolchain (`swift`/`swiftpm`) without Xcode.
 
 ## Usage
 

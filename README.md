@@ -44,7 +44,7 @@ mint run mono0926/LicensePlist
 
 ### Nix (tagged flake)
 
-This fork provides a Nix flake package for `license-plist` (`3.25.1`) via tag `nix-3.25.1`.
+This Nix flake does not provide the latest `license-plist` yet, and currently provides `license-plist` `3.25.1` via tag `nix-3.25.1`.
 
 Install to your profile from the tag:
 
