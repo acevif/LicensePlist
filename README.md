@@ -42,27 +42,58 @@ brew install licenseplist
 mint run mono0926/LicensePlist
 ```
 
-### Nix (tagged flake)
+### Nix (branch: nix, version: 3.25.x)
 
-This Nix flake does not provide the latest `license-plist` yet, and currently provides `license-plist` `3.25.1` via tag `nix-3.25.1`.
+This Nix flake currently provides the `license-plist` 3.25.x line.
+`nixpkgs` does not yet provide Swift 6 support for newer `license-plist` releases, so this branch tracks 3.25.x for now.
 
-Install to your profile from the tag:
+#### Install to your profile
 
 ```sh
-nix profile add 'github:acevif/LicensePlist?ref=nix-3.25.1'
+nix profile add 'github:acevif/LicensePlist?ref=nix'
 license-plist --version
 ```
 
-Run once without installing:
+#### Run once without installing
 
 ```sh
-nix run 'github:acevif/LicensePlist?ref=nix-3.25.1' -- --version
+nix run 'github:acevif/LicensePlist?ref=nix' -- --version
 ```
 
-Use the devShell for Nix maintenance commands:
+#### Install to your own `devShell` (defined in `flake.nix`)
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    licenseplist.url = "github:acevif/LicensePlist?ref=nix";
+  };
+
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+
+      perSystem = { pkgs, inputs', ... }: {
+        devShells.default = pkgs.mkShell {
+          packages = [
+            inputs'.licenseplist.packages.default
+            pkgs.darwin.xcode_26_2
+          ];
+        };
+      };
+    };
+}
+```
+
+Then run:
 
 ```sh
-nix develop 'github:acevif/LicensePlist?ref=nix-3.25.1#default' --command make nix_update
+nix develop
+license-plist --version
 ```
 
 ### Xcode project - SPM
