@@ -42,6 +42,29 @@ brew install licenseplist
 mint run mono0926/LicensePlist
 ```
 
+### Nix (tagged flake)
+
+This fork provides a Nix flake package for `license-plist` (`3.25.1`) via tag `nix-3.25.1`.
+
+Install to your profile from the tag:
+
+```sh
+nix profile add 'github:acevif/LicensePlist?ref=nix-3.25.1'
+license-plist --version
+```
+
+Run once without installing:
+
+```sh
+nix run 'github:acevif/LicensePlist?ref=nix-3.25.1' -- --version
+```
+
+Use the devShell for Nix maintenance commands:
+
+```sh
+nix develop 'github:acevif/LicensePlist?ref=nix-3.25.1#default' --command make nix_update
+```
+
 ### Xcode project - SPM
 
 In Project Settings, on the tab "Package Dependencies", click "+" and add `https://github.com/mono0926/LicensePlist`.
