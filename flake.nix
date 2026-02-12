@@ -16,8 +16,6 @@
             pkgs.swift
             pkgs.swiftpm
             pkgs.swiftpm2nix
-            pkgs.jq
-            pkgs.nurl
           ];
         };
 
